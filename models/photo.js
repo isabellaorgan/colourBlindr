@@ -2,7 +2,7 @@ var mongoose = require('mongoose');
 
 var photoSchema = new mongoose.Schema({
 	imgname: {type: String,
-	colorprofile: {type: String, default: 'red'},
+	altered: {type: Boolean, default: 'false'},
 	caption: {type: String, default: 'photo description'}
 	}
 });
