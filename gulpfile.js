@@ -28,7 +28,7 @@ gulp.task('jshint:app', function() {
 	.pipe(jshint({
 		node: true
 	}))
-	.pipe(jshint.reporter('default'));
+	.pipe(jshint.reporter('jshint-stylish'));
 });
 
 gulp.task('jscs', function() {
@@ -41,7 +41,7 @@ gulp.task('mocha:test', function () {
 	return gulp.src(testFiles)
 	.pipe(mocha({
 		// read:false,
-		reporter: 'spec'}));
+		reporter: 'nyan'}));
 });
 
 gulp.task('jshint', ['jshint:test', 'jshint:app']);
