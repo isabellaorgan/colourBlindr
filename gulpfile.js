@@ -20,7 +20,7 @@ gulp.task('jshint:test', function() {
 					after: true
 				}
 		}))
-		.pipe(jshint.reporter('default'));
+		.pipe(jshint.reporter('jshint-stylish'));
 });
 
 gulp.task('jshint:app', function() {
@@ -40,10 +40,9 @@ gulp.task('jscs', function() {
 gulp.task('mocha:test', function () {
 	return gulp.src(testFiles)
 	.pipe(mocha({
-		// read:false,
 		reporter: 'nyan'}));
 });
 
 gulp.task('jshint', ['jshint:test', 'jshint:app']);
 gulp.task('mocha', ['mocha:test']);
-gulp.task('default', ['jscs', 'jshint']);
+gulp.task('default', ['jscs', 'jshint', 'mocha:test']);
