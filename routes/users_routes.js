@@ -1,6 +1,7 @@
 var express = require('express');
 var bodyParser = require('body-parser');
 var User = require(__dirname + '/../models/user');
+var handleError = require(__dirname + '/../lib/handleErrors.js');
 
 var usersRouter = module.exports = exports = express.Router();
 
@@ -14,6 +15,7 @@ usersRouter.get('/users', function(req, res) {
 
 usersRouter.post('/users', bodyParser.json(), function(req, res) {
 	var newUser = new User(req.body);
+	console.log(newUser)
 	newUser.save(function(err, data) {
 		if (err) return handleError(err, res);
 

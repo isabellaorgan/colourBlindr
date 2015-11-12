@@ -3,14 +3,48 @@ var chaiHttp = require('chai-http');
 chai.use(chaiHttp);
 var expect = chai.expect;
 require(__dirname + '/../server.js');
+var mongoose = require('mongoose');
+var User = require(__dirname + '/../models/user.js');
+process.env.MONGOLAB_URI = 'mongodb://localhost/user_test';
 
 describe('the server', function(){
-  it('should start', function(done){
-    chai.request('localhost:3000')
-    .get('/')
-    .end(function(err, res){
-      expect(err).to.eql(null);
+  before(function(done){
+    this.userData = {username: 'test name'};
+    done();
+  });
+
+  after(function(done){
+    mongoose.connection.db.dropDatabase(function(){
       done();
     });
   });
+
+  it('should GET data from the db', function(done){
+    chai.request('localhost:3000')
+    .get('/api/users')
+    .end(function(err, res){
+      expect(err).to.eql(null);
+      expect(res.status).to.eql(200);
+      expect(Array.isArray(res.body)).to.eql(true);
+      done();
+    });
+  });
+
+  it('should POST data to the DB', function(done){
+    chai.request('localhost:3000')
+    .post('/api/users')
+    .send(this.userData)
+    .end(function(err, res){
+      console.log(res.body)
+      expect(err).to.eql(null);
+      expect(res.body.username).to.eql('test name');
+      expect(res.body).to.have.property('_id');
+      done();
+    });
+  });
+
+  it('should DELETE dat from the DB')
+
+  it('should modify data with a PUT request')
+
 });
