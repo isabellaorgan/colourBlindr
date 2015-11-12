@@ -1,0 +1,65 @@
+body {
+	text-align: center;
+	width: 90%;
+	margin: 0 auto;
+	background-color: #a1d700;
+	color: #17373c;	
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 16px;
+	line-height: 1.5;
+}
+
+#glurp-header {
+	font-family: 'Chewy', cursive;
+  	font-size: 56px;
+  	letter-spacing: 20px;
+  	color: #0d1c33;
+}
+
+h1 {
+	text-align: center;
+	font-family: Didact Gothic;
+  	font-size: 24px;
+  	color: #0d1c33;
+}
+h2 {
+	text-align: center;
+	letter-spacing: 5px;
+	font-family: Raleway;
+  	font-size: 18px;
+  	color: #000000;
+}
+h3 {
+	font-weight: bold;
+}
+
+a:link {
+	color: #4f9300;
+	text-decoration: none;
+}
+a:hover {
+	color: #000;
+	text-decoration: underline;
+}
+a:visited {
+	color: #fff;
+}
+
+p { 
+	height: 75%;
+	width: 75%;
+	margin-left: 20px;
+	padding-left: 20px;
+	text-align: center;
+	}
+
+#footer {
+	text-align: center;
+	color: DeepPink;
+/*	position: fixed;
+	bottom: 0px;*/
+}
+
+
+
+

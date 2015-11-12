@@ -1,0 +1,28 @@
+{
+  "name": "colourblindr",
+  "version": "1.0.0",
+  "description": "Colo(u)rBlindr is an app that allows colour sighted people to perceive the world as colour blind people do, thus allowing them to understand the challenges that colour blind individuals face.",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/isabellaorgan/colourBlindr.git"
+  },
+  "keywords": [
+    "color",
+    "blindness",
+    "node",
+    "express",
+    "mongodb",
+    "mongoose"
+  ],
+  "author": "isabellaorgan@gmail.com",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/isabellaorgan/colourBlindr/issues"
+  },
+  "homepage": "https://github.com/isabellaorgan/colourBlindr#readme"
+}
