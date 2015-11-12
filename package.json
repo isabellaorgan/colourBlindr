@@ -4,7 +4,7 @@
   "description": "Colo(u)rBlindr is an app that allows colour sighted people to perceive the world as colour blind people do, thus allowing them to understand the challenges that colour blind individuals face.",
   "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "./node_modules/mocha/bin/mocha test",
     "start": "node server.js"
   },
   "repository": {
