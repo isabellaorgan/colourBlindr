@@ -15,7 +15,6 @@ usersRouter.get('/users', function(req, res) {
 
 usersRouter.post('/users', bodyParser.json(), function(req, res) {
 	var newUser = new User(req.body);
-	console.log(newUser)
 	newUser.save(function(err, data) {
 		if (err) return handleError(err, res);
 
@@ -25,16 +24,16 @@ usersRouter.post('/users', bodyParser.json(), function(req, res) {
 
 usersRouter.put('/users/:id', bodyParser.json(), function(req, res) {
 	var userData = req.body;
-	delete UserData._id;
+	delete userData._id;
 	User.update({_id: req.params.id}, userData, function(err, data) {
 		if (err) handleError(err, res);
 
-		res.json({msg: 'User added'});
+		res.json({msg: 'User updated'});
 	});
 });
 
-usersRouter.delete('/users:id', function(req, res) {
-	User.remove({id: req.params.id}, function(err) {
+usersRouter.delete('/users/:id', function(req, res) {
+	User.remove({_id: req.params.id}, function(err) {
 		if (err) return handleError(err, res);
 
 		res.json({msg: 'User removed'});
