@@ -1,12 +1,12 @@
-'use strict'
+'use strict';
 
 var gulp = require('gulp');
 var mocha = require('gulp-mocha');
-var expect = require('chai').expect;
+//var expect = require('chai').expect;
 var jshint = require('gulp-jshint');
 var jscs = require('gulp-jscs');
 var stylish = require('gulp-jscs-stylish');
-var appFiles = ['server.js', './lib/**/*.js'];
+var appFiles = ['./lib/**/*.js'];
 var testFiles = ['./test/**/*.js'];
 
 gulp.task('jshint:test', function() {
@@ -40,7 +40,7 @@ gulp.task('jscs', function() {
 gulp.task('mocha:test', function () {
 	return gulp.src(testFiles)
 	.pipe(mocha({
-		reporter: 'nyan'}));
+		reporter: 'spec'}));
 });
 
 gulp.task('jshint', ['jshint:test', 'jshint:app']);
