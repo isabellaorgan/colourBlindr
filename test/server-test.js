@@ -35,7 +35,6 @@ describe('the server', function(){
     .post('/api/users')
     .send(this.userData)
     .end(function(err, res){
-      console.log(res.body)
       expect(err).to.eql(null);
       expect(res.body.username).to.eql('test name');
       expect(res.body).to.have.property('_id');
@@ -43,8 +42,36 @@ describe('the server', function(){
     });
   });
 
-  it('should DELETE dat from the DB')
 
-  it('should modify data with a PUT request')
+  describe(',when you want it to,', function(){
+    beforeEach(function(done){
+      (new User({username: 'test guy'})).save(function(err, data){
+        expect(err).to.eql(null);
+        this.user = data;
+        done();
+      }.bind(this));
+    });
 
+    it('should DELETE data from the DB', function(done){
+      chai.request('localhost:3000')
+      .delete('/api/users/' + this.user._id)
+      .end(function(err, res) {
+        expect(err).to.eql(null);
+        expect(res.status).to.eql(200);
+        expect(res.body.msg).to.eql('User removed');
+        done();
+      });
+    });
+
+    it('should modify data with a PUT request', function(done){
+      chai.request('localhost:3000')
+      .put('/api/users/' + this.user._id)
+      .end(function(err, res){
+        expect(err).to.eql(null);
+        expect(res.status).to.eql(200);
+        expect(res.body.msg).to.eql('User updated')
+        done();
+      });
+    });
+  });
 });
