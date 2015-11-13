@@ -14,10 +14,8 @@ describe('the server', function(){
   });
 
   after(function(done){
-    mongoose.connection.db.dropDatabase(function(){
-      done();
+    mongoose.connection.close(done());
     });
-  });
 
   it('should GET data from the db', function(done){
     chai.request('localhost:3000')
