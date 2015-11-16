@@ -1,0 +1,23 @@
+{
+  "name": "test-color-blindr",
+  "version": "1.0.0",
+  "description": "testing heroku deployment",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/craigaaroncampbell/test-color-blindr.git"
+  },
+  "author": "craigaaroncampbell@gmail.com",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/craigaaroncampbell/test-color-blindr/issues"
+  },
+  "homepage": "https://github.com/craigaaroncampbell/test-color-blindr#readme",
+  "dependencies": {
+    "express": "^4.13.3"
+  }
+}
