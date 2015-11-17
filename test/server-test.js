@@ -4,7 +4,7 @@ chai.use(chaiHttp);
 var expect = chai.expect;
 require(__dirname + '/../server.js');
 var mongoose = require('mongoose');
-var User = require(__dirname + '/../models/user.js');
+var User = require(__dirname + '/../models/user');
 process.env.MONGOLAB_URI = 'mongodb://localhost/user_test';
 
 describe('the server', function(){
