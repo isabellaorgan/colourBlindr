@@ -9,7 +9,7 @@ mongoose.connect(mongoURI);
 app.use('/api', usersRouter);
 
 app.get('/', function(req, res) {
-res.send('hello world');
+res.send('This is Colo(u)Blindr up and running');
 });
 
 app.listen(port, function(){
