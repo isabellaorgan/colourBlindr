@@ -3,9 +3,7 @@ var bodyParser = require('body-parser');
 var User = require(__dirname + '/../models/user');
 var handleError = require(__dirname + '/../lib/handleErrors.js');
 
-
 var usersRouter = module.exports = exports = express.Router();
-
 
 usersRouter.use(express.static(__dirname + '/public'));
 
@@ -43,6 +41,3 @@ usersRouter.delete('/users/:id', function(req, res) {
 		res.json({msg: 'User removed'});
 	});
 });
-
-
-
