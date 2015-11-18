@@ -1,7 +1,8 @@
 var express = require('express');
+var fs = require('fs');
 var app = express();
 var transform = require(__dirname + '/lib/jpeg.js');
-
+var delimg = require(__dirname + '/lib/delimg.js');
 
 var port = process.env.PORT || 3000;
 var usersRouter = require(__dirname + '/routes/users_routes.js');
@@ -23,7 +24,7 @@ app.get('/', function(req, res) {
 // });
 
 
-app.get('/protan', transform, function(req, res) {
+app.get('/protan', delimg,  transform, function(req, res) {
   res.status(200).sendFile('index.html', {root: __dirname + "/public"});
 });
 
