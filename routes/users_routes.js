@@ -3,9 +3,11 @@ var bodyParser = require('body-parser');
 var User = require(__dirname + '/../models/user');
 var handleError = require(__dirname + '/../lib/handleErrors.js');
 
-var transform = require(__dirname + '/../lib/jpeg.js');
 
 var usersRouter = module.exports = exports = express.Router();
+
+
+usersRouter.use(express.static(__dirname + '/public'));
 
 usersRouter.get('/users', function(req, res) {
 	User.find({}, function(err, data) {
@@ -43,10 +45,5 @@ usersRouter.delete('/users/:id', function(req, res) {
 });
 
 
-usersRouter.get('/protan', transform, function(req, res) {
-	User.find({}, function(err, data) {
-		if (err) return handleError(err, res);
 
-		res.json(data);
-	});
-});
+
