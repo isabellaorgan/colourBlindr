@@ -1,7 +1,8 @@
 var expect = require('chai').expect;
-require(__dirname + '/../lib/jpeg');
-require(__dirname + '/../lib/algo');
-
+var rgbToHex = require(__dirname + '/../lib/algo').rgbToHex;
+var componentToHex = require(__dirname + '/../lib/algo').componentToHex;
+var protan = require(__dirname + '/../lib/algo').protan;
+var Jimp = require('patci-jimp');
 
 describe('the transform process', function() {
 
