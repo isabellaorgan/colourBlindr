@@ -2,7 +2,7 @@
 
 var gulp = require('gulp');
 var mocha = require('gulp-mocha');
-//var expect = require('chai').expect;
+var expect = require('chai').expect;
 var jshint = require('gulp-jshint');
 var jscs = require('gulp-jscs');
 var stylish = require('gulp-jscs-stylish');
