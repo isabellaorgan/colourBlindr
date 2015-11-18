@@ -31,7 +31,7 @@
     "body-parser": "^1.14.1",
     "eat": "^0.1.1",
     "express": "^4.13.3",
-    "jimp": "^0.2.19",
+    "jimp": "https://github.com/patci/jimp.git",
     "mongoose": "^4.2.5"
   },
   "devDependencies": {
