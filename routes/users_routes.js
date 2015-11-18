@@ -43,6 +43,3 @@ usersRouter.delete('/users/:id', function(req, res) {
 		res.json({msg: 'User removed'});
 	});
 });
-
-
-
