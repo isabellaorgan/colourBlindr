@@ -1,5 +1,4 @@
 {
-
   "name": "colourblindr",
   "version": "1.0.0",
   "description": "Colo(u)rBlindr is an app that allows colour sighted people to perceive the world as colour blind people do, thus allowing them to understand the challenges that colour blind individuals face.",
@@ -10,7 +9,6 @@
   },
   "repository": {
     "type": "git",
-
     "url": "git+https://github.com/isabellaorgan/colourBlindr.git"
   },
   "keywords": [
@@ -29,10 +27,11 @@
   "homepage": "https://github.com/isabellaorgan/colourBlindr#readme",
   "dependencies": {
     "body-parser": "^1.14.1",
+    "color-blind": "^0.1.1",
     "eat": "^0.1.1",
     "express": "^4.13.3",
-    "patci-jimp": "0.2.19",
-    "mongoose": "^4.2.5"
+    "mongoose": "^4.2.5",
+    "patci-jimp": "^0.2.19"
   },
   "devDependencies": {
     "chai": "^3.4.1",
