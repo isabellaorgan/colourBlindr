@@ -15,8 +15,58 @@ app.use(express.static(__dirname + '/public'));
 
 app.use('/api', usersRouter);
 
-app.get('/', function(req, res) {
-  res.send('howdy')
+app.get('/original', function(req, res) {
+  var body = '<html>' +
+  '<head>' +
+  '<meta http-equiv="Content-Type" content="text/html; ' +
+  'charset=UTF-8" + />' +
+  '</head>' +
+  '<body>' +
+  '<img src="images/original.jpg" alt="original image">' +
+  '</body>' +
+  '</html>';
+
+  res.writeHead(200, {'Content-Type' : 'text/html'});
+  res.write(body);
+  res.end();
+
+})
+
+app.get('/protan', delimg, transform, function(req, res) {
+  var something = 'protan.jpg'
+  var body = '<html>' +
+  '<head>' +
+  '<meta http-equiv="Content-Type" content="text/html; ' +
+  'charset=UTF-8" + />' +
+  '</head>' +
+  '<body>' +
+
+  '<img src="images/' + something + '" alt="protan image">' +
+  '</body>' +
+  '</html>';
+
+  res.writeHead(200, {'Content-Type' : 'text/html'});
+  res.write(body);
+  res.end();
+
+})
+app.get('/compare', delimg, transform, function(req, res) {
+  var something = 'protan.jpg'
+  var body = '<html>' +
+  '<head>' +
+  '<meta http-equiv="Content-Type" content="text/html; ' +
+  'charset=UTF-8" + />' +
+  '</head>' +
+  '<body>' +
+  '<img src="images/original.jpg" alt="original image">'+
+  '<img src="images/' + something + '" alt="protan image">' +
+  '</body>' +
+  '</html>';
+
+  res.writeHead(200, {'Content-Type' : 'text/html'});
+  res.write(body);
+  res.end();
+
 })
 
 // app.get('/', function(req, res) {
