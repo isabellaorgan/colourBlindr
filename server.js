@@ -32,7 +32,7 @@ app.get('/original', function(req, res) {
 
 })
 
-app.get('/protan', delimg, transform, function(req, res) {
+app.get('/transformed', delimg, transform, function(req, res) {
   var something = 'protan.jpg'
   var body = '<html>' +
   '<head>' +
@@ -40,7 +40,6 @@ app.get('/protan', delimg, transform, function(req, res) {
   'charset=UTF-8" + />' +
   '</head>' +
   '<body>' +
-
   '<img src="images/' + something + '" alt="protan image">' +
   '</body>' +
   '</html>';
@@ -69,15 +68,9 @@ app.get('/compare', delimg, transform, function(req, res) {
 
 })
 
-// app.get('/', function(req, res) {
-// res.send('This is Colo(u)Blindr up and running');
-// });
-
-
 app.get('/protan', delimg,  transform, function(req, res) {
   res.status(200).sendFile('index.html', {root: __dirname + "/public"});
 });
-
 
 app.listen(port, function(){
   console.log("The server is running on port: " + port);
