@@ -2,6 +2,7 @@ var expect = require('chai').expect;
 var rgbToHex = require(__dirname + '/../lib/algo').rgbToHex;
 var componentToHex = require(__dirname + '/../lib/algo').componentToHex;
 var protan = require(__dirname + '/../lib/algo').protan;
+var blinder = require('color-blind');
 var Jimp = require('patci-jimp');
 
 describe('the transform process', function() {
@@ -15,6 +16,6 @@ describe('the transform process', function() {
   });
 
   it('should transform a hex value', function() {
-    expect(protan('#FEF571')).to.not.eql('#FEF571');
+    expect(blinder.protanopia('#FEF571')).to.not.eql('#FEF571');
   });
 });
