@@ -1,6 +1,5 @@
 {
     "requireCurlyBraces": [
-        "if",
         "else",
         "for",
         "while",
@@ -11,10 +10,10 @@
     "requireOperatorBeforeLineBreak": true,
     "requireCamelCaseOrUpperCaseIdentifiers": true,
     "maximumLineLength": {
-      "value": 80,
+      "value": 160,
       "allExcept": ["comments", "regex"]
     },
-    "validateIndentation": 2,
+    "validateIndentation": "\t",
     "validateQuoteMarks": "'",
 
     "disallowMultipleLineStrings": true,
