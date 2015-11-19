@@ -69,7 +69,7 @@ describe('the server', function(){
       .end(function(err, res){
         expect(err).to.eql(null);
         expect(res.status).to.eql(200);
-        expect(res.body.msg).to.eql('User updated')
+        expect(res.body.msg).to.eql('User updated');
         done();
       });
     });
