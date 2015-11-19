@@ -1,10 +1,10 @@
 var mongoose = require('mongoose');
 
 var imageSchema = new mongoose.Schema({
-	imagename: {type: String,
+	image_path: String,
 	altered: {type: Boolean, default: 'false'},
-	caption: {type: String, default: 'image description'}
-	}
+	owner: {type: String, default: 'anonymous'}
+
 });
 
 module.exports = mongoose.model('Image', imageSchema);
