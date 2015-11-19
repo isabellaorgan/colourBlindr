@@ -15,16 +15,6 @@ usersRouter.get('/users', function(req, res) {
 	});
 });
 
-usersRouter.get('/users/:id', bodyParser.json(), function(req, res) {
-	var userData = req.body;
-	delete userData._id;
-	User.update({_id: req.params.id}, userData, function(err, data) {
-		if (err) handleError(err, res);
-
-		res.json({msg: 'User updated'});
-	});
-});
-
 usersRouter.post('/users', bodyParser.json(), function(req, res) {
 	User.findOne({'username': req.body.username}, function(err, data) {
     if (err) return handleError(err, res);
@@ -60,7 +50,7 @@ usersRouter.delete('/users/:id', function(req, res) {
 
 usersRouter.get('/users/:username', function(req, res) {
 	User.findOne({'username': req.params.username}, function(err, data) {
-		if (err) res.status(404).sendFile('404.html', {root : __dirname + '/public'});
+		if (err) return handleError(err, res);
 	var body = '<html>' +
   '<head>' +
   '<meta http-equiv="Content-Type" content="text/html; ' +
