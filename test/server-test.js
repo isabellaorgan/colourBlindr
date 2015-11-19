@@ -10,6 +10,7 @@ process.env.MONGOLAB_URI = 'mongodb://localhost/user_test';
 describe('the server', function(){
   before(function(done){
     this.userData = {username: 'test name'};
+    this.imageData = {image_path: '/test-path'};
     done();
   });
 
@@ -30,6 +31,17 @@ describe('the server', function(){
     });
   });
 
+  it('should GET images from the db', function(done){
+    chai.request('localhost:3000')
+    .get('/api/images')
+    .end(function(err, res){
+      expect(err).to.eql(null);
+      expect(res.status).to.eql(200);
+      expect(Array.isArray(res.body).to.eql(true));
+      done();
+    });
+  });
+
   it('should POST users to the DB', function(done){
     chai.request('localhost:3000')
     .post('/api/users')
@@ -42,6 +54,17 @@ describe('the server', function(){
     });
   });
 
+  it('should POST images to the DB', function(done){
+    chai.request('localhost:3000')
+    .post('/api/images')
+    .send(this.imageData)
+    .end(function(err, res){
+      expect(err).to.eql(null);
+      expect(res.body.image_path).to.eql('/test-path');
+      expect(res.body).to.have.property('_id');
+      done();
+    });
+  });
 
   describe(',when you want it to,', function(){
     beforeEach(function(done){
