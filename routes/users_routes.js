@@ -52,19 +52,21 @@ usersRouter.delete('/users/:id', function(req, res) {
 
 usersRouter.get('/users/:username', function(req, res) {
 	User.findOne({'username': req.params.username}, function(err, data) {
-		if (err) return res.status(404).sendFile('404.html', {root : __dirname + '/public'});
-	var body = '<html>' +
-  '<head>' +
-  '<meta http-equiv="Content-Type" content="text/html; ' +
-  'charset=UTF-8" + />' +
-  '</head>' +
-  '<body>' +
-  '<p> Hi my name is ' + data.username + '!  I can put other info here too! For example: my vison_type is: ' + data.vision_type + '.</p>' +
-  '</body>' +
-  '</html>';
+		if (err) return handleError(err, res);
+		if (Data) {
+			var body = '<html>' +
+		  '<head>' +
+		  '<meta http-equiv="Content-Type" content="text/html; ' +
+		  'charset=UTF-8" + />' +
+		  '</head>' +
+		  '<body>' +
+		  '<p> Hi my name is ' + data.username + '!  I can put other info here too! For example: my vison_type is: ' + data.vision_type + '.</p>' +
+		  '</body>' +
+		  '</html>';
 
-  res.writeHead(200, {'Content-Type' : 'text/html'});
-  res.write(body);
-  res.end();
+		  res.writeHead(200, {'Content-Type' : 'text/html'});
+		  res.write(body);
+		  res.end();
+		}
 	});
 });
