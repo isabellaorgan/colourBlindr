@@ -57,7 +57,7 @@ usersRouter.get('/users/:username', function(req, res) {
 		'charset=UTF-8" + />' +
 		'</head>' +
 		'<body>' +
-		'<p> Hi my name is ' + data.username + '!  I can put other info here too! For example: my visonType is: ' + data.visionType + '.</p>' +
+		'<p> Hi my name is ' + data.username + '!  I can put other info here too! For example: my visontype is: ' + data.visiontype + '.</p>' +
 		'</body>' +
 		'</html>';
 
