@@ -10,7 +10,7 @@ process.env.MONGOLAB_URI = 'mongodb://localhost/user_test';
 describe('the server', function(){
   before(function(done){
     this.userData = {username: 'test name'};
-    this.imageData = {image_path: '/test-path'};
+    this.imageData = {imagepath: '/test-path'};
     done();
   });
 
@@ -60,7 +60,7 @@ describe('the server', function(){
     .send(this.imageData)
     .end(function(err, res){
       expect(err).to.eql(null);
-      expect(res.body.image_path).to.eql('/test-path');
+      expect(res.body.imagepath).to.eql('/test-path');
       expect(res.body).to.have.property('_id');
       done();
     });
