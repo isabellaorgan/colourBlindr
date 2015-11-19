@@ -24,6 +24,10 @@ app.get('/original', function(req, res) {
   '<head>' +
   '<meta http-equiv="Content-Type" content="text/html; ' +
   'charset=UTF-8" + />' +
+  '<link href="https://fonts.googleapis.com/css?family=Bitter" rel="stylesheet" type="text/css"> ' +
+  '<link rel="stylesheet" href="https://colourblindr.herokuapp.com/css/reset.css"> ' +
+  '<link rel="stylesheet" href="https://colourblindr.herokuapp.com/css/fonts.css"> ' +
+  '<link rel="stylesheet" href="https://colourblindr.herokuapp.com/css/base.css"> ' +
   '</head>' +
   '<body>' +
   '<img src="images/original.jpg" alt="original image">' +
@@ -40,6 +44,10 @@ app.get('/transformed', delimg, transform, function(req, res) {
   '<head>' +
   '<meta http-equiv="Content-Type" content="text/html; ' +
   'charset=UTF-8" + />' +
+  '<link href="https://fonts.googleapis.com/css?family=Bitter" rel="stylesheet" type="text/css"> ' +
+  '<link rel="stylesheet" href="https://colourblindr.herokuapp.com/css/reset.css"> ' +
+  '<link rel="stylesheet" href="https://colourblindr.herokuapp.com/css/fonts.css"> ' +
+  '<link rel="stylesheet" href="https://colourblindr.herokuapp.com/css/base.css"> ' +
   '</head>' +
   '<body>' +
   '<img src="images/' + something + '" alt="protan image">' +
@@ -55,6 +63,10 @@ app.get('/compare', delimg, transform, function(req, res) {
 	var body = '<html>' +
   '<meta http-equiv="Content-Type" content="text/html; ' +
   'charset=UTF-8" + />' +
+  '<link href="https://fonts.googleapis.com/css?family=Bitter" rel="stylesheet" type="text/css"> ' +
+  '<link rel="stylesheet" href="https://colourblindr.herokuapp.com/css/reset.css"> ' +
+  '<link rel="stylesheet" href="https://colourblindr.herokuapp.com/css/fonts.css"> ' +
+  '<link rel="stylesheet" href="https://colourblindr.herokuapp.com/css/base.css"> ' +
   '</head>' +
   '<body>' +
   '<img src="images/original.jpg" alt="original image">' +
