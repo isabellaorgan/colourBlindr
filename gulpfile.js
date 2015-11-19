@@ -13,7 +13,7 @@ gulp.task('jshint:test', function() {
 	return gulp.src(testFiles)
 		.pipe(jshint({
 				node: true,
-				globals: {
+				globals: {z
 					describe: true,
 					it: true,
 					before: true,
