@@ -1,12 +1,17 @@
 //sign in
 
 $('#signupButton').on('click', function(e) {
-	console.log('clicked!');
-    var usernameToSend = $('#usernameId').val();
+	var usernameToSend = $('#newUsername').val();
+	var userVisionToSend = $('#newVisType').val();
 
-    // e.preventDefault();
-    $.post('/api/users', '{"username":"usernameToSend"}', function(res, data) {
-			console.log('username');
-    });
+  $.ajax({
+	  type: "POST",
+	  url: '/api/users',
+	  data: JSON.stringify( {"username": usernameToSend,"visiontype": userVisionToSend}),
+	  contentType: "application/json",
+ 		dataType: 'json'
+	});
+
+	$('#newUsername').val('');
+	$('#newVisType').val('');
 });
-console.log('outside!');
