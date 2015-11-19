@@ -15,8 +15,6 @@ usersRouter.get('/users', function(req, res) {
 	});
 });
 
-
-
 usersRouter.post('/users', bodyParser.json(), function(req, res) {
 	User.findOne({'username': req.body.username}, function(err, data) {
     if (err) return handleError(err, res);
@@ -53,7 +51,7 @@ usersRouter.delete('/users/:id', function(req, res) {
 usersRouter.get('/users/:username', function(req, res) {
 	User.findOne({'username': req.params.username}, function(err, data) {
 		if (err) return handleError(err, res);
-		if (Data) {
+		if (!data) return res.status(404).sendFile('404.html', {root : __dirname + '/../public'});
 			var body = '<html>' +
 		  '<head>' +
 		  '<meta http-equiv="Content-Type" content="text/html; ' +
@@ -67,6 +65,5 @@ usersRouter.get('/users/:username', function(req, res) {
 		  res.writeHead(200, {'Content-Type' : 'text/html'});
 		  res.write(body);
 		  res.end();
-		}
 	});
 });
