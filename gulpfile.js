@@ -14,11 +14,11 @@ gulp.task('jshint:test', function() {
 		.pipe(jshint({
 			node: true,
 			globals: {
-					describe: true,
-					it: true,
-					before: true,
-					after: true
-				}
+				describe: true,
+				it: true,
+				before: true,
+				after: true
+			}
 		}))
 		.pipe(jshint.reporter('jshint-stylish'));
 });
