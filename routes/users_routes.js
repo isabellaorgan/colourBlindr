@@ -51,7 +51,9 @@ usersRouter.delete('/users/:id', function(req, res) {
 usersRouter.get('/users/:username', function(req, res) {
 	User.findOne({'username': req.params.username}, function(err, data) {
 		if (err) return handleError(err, res);
+		if (!data) return res.status(404).sendFile('404.html', {root: __dirname + '/../public'});
 		var body = '<html>' +
+
 		'<head>' +
 		'<meta http-equiv="Content-Type" content="text/html; ' +
 		'charset=UTF-8" + />' +
@@ -64,5 +66,6 @@ usersRouter.get('/users/:username', function(req, res) {
 		res.writeHead(200, {'Content-Type': 'text/html'});
 		res.write(body);
 		res.end();
+
 	});
 });

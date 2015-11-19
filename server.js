@@ -53,7 +53,6 @@ app.get('/transformed', delimg, transform, function(req, res) {
 app.get('/compare', delimg, transform, function(req, res) {
 	var something = 'protan.jpg';
 	var body = '<html>' +
-  '<head>' +
   '<meta http-equiv="Content-Type" content="text/html; ' +
   'charset=UTF-8" + />' +
   '</head>' +
