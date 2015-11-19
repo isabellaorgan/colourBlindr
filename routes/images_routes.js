@@ -3,13 +3,9 @@ var bodyParser = require('body-parser');
 var Img = require(__dirname + '/../models/image');
 var handleError = require(__dirname + '/../lib/handleErrors.js');
 
-
 var imagesRouter = module.exports = exports = express.Router();
 
-
-imagesRouter.use(express.static(__dirname + '/public'));
-
-imagesRouter.get('/imagess', function(req, res) {
+imagesRouter.get('/images', function(req, res) {
 	Img.find({}, function(err, data) {
 		if (err) return handleError(err, res);
 
