@@ -37,7 +37,7 @@ describe('the server', function(){
     .end(function(err, res){
       expect(err).to.eql(null);
       expect(res.status).to.eql(200);
-      expect(Array.isArray(res.body).to.eql(true));
+      expect(Array.isArray(res.body)).to.eql(true);
       done();
     });
   });
