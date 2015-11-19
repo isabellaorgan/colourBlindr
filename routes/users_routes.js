@@ -17,15 +17,15 @@ usersRouter.get('/users', function(req, res) {
 
 usersRouter.post('/users', bodyParser.json(), function(req, res) {
 	User.findOne({'username': req.body.username}, function(err, data) {
-    if (err) return handleError(err, res);
-    if (data && data.username === req.body.username) {
-      return console.log('THAT USER IS ALREADY IN THE DATABASE');
-    }
+		if (err) return handleError(err, res);
+		if (data && data.username === req.body.username) {
+			return console.log('THAT USER IS ALREADY IN THE DATABASE');
+		}
 		var newUser = new User(req.body);
 		newUser.save(function(err, data) {
-		if (err) return handleError(err, res);
+			if (err) return handleError(err, res);
 
-		res.json(data);
+			res.json(data);
 		});
 	});
 });
@@ -52,18 +52,17 @@ usersRouter.get('/users/:username', function(req, res) {
 	User.findOne({'username': req.params.username}, function(err, data) {
 		if (err) return handleError(err, res);
 		if (!data) return res.status(404).sendFile('404.html', {root : __dirname + '/../public'});
-			var body = '<html>' +
-		  '<head>' +
-		  '<meta http-equiv="Content-Type" content="text/html; ' +
-		  'charset=UTF-8" + />' +
-		  '</head>' +
-		  '<body>' +
-		  '<p> Hi my name is ' + data.username + '!  I can put other info here too! For example: my vison_type is: ' + data.vision_type + '.</p>' +
-		  '</body>' +
-		  '</html>';
-
-		  res.writeHead(200, {'Content-Type' : 'text/html'});
-		  res.write(body);
-		  res.end();
+		var body = '<html>' +
+	  '<head>' +
+	  '<meta http-equiv="Content-Type" content="text/html; ' +
+	  'charset=UTF-8" + />' +
+	  '</head>' +
+	  '<body>' +
+	  '<p> Hi my name is ' + data.username + '!  I can put other info here too! For example: my vison_type is: ' + data.vision_type + '.</p>' +
+	  '</body>' +
+	  '</html>';
+	  res.writeHead(200, {'Content-Type' : 'text/html'});
+	  res.write(body);
+	  res.end();
 	});
 });

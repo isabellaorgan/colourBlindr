@@ -6,19 +6,19 @@ var expect = require('chai').expect;
 var jshint = require('gulp-jshint');
 var jscs = require('gulp-jscs');
 var stylish = require('gulp-jscs-stylish');
-var appFiles = ['./lib/**/*.js'];
+var appFiles = ['server.js', 'gulpfile.js', './lib/**/*.js', './models/**/*.js', './routes/**/*.js'];
 var testFiles = ['./test/**/*.js'];
 
 gulp.task('jshint:test', function() {
 	return gulp.src(testFiles)
 		.pipe(jshint({
-				node: true,
-				globals: {z
-					describe: true,
-					it: true,
-					before: true,
-					after: true
-				}
+			node: true,
+			globals: {
+				describe: true,
+				it: true,
+				before: true,
+				after: true
+			}
 		}))
 		.pipe(jshint.reporter('jshint-stylish'));
 });
@@ -37,7 +37,7 @@ gulp.task('jscs', function() {
 	.pipe(stylish());
 });
 
-gulp.task('mocha:test', function () {
+gulp.task('mocha:test', function() {
 	return gulp.src(testFiles)
 	.pipe(mocha({
 		reporter: 'spec'}));
