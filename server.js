@@ -15,6 +15,10 @@ app.use(express.static(__dirname + '/public'));
 app.use('/api', imagesRouter);
 app.use('/api', usersRouter);
 
+app.get('/upload', function(req, res) {
+ res.status(200).sendFile('upload.html', {root : __dirname + '/public'});
+});
+
 app.get('/original', function(req, res) {
   var body = '<html>' +
   '<head>' +
@@ -25,12 +29,10 @@ app.get('/original', function(req, res) {
   '<img src="images/original.jpg" alt="original image">' +
   '</body>' +
   '</html>';
-
   res.writeHead(200, {'Content-Type' : 'text/html'});
   res.write(body);
   res.end();
-
-})
+});
 
 app.get('/transformed', delimg, transform, function(req, res) {
   var something = 'protan.jpg'
@@ -43,12 +45,11 @@ app.get('/transformed', delimg, transform, function(req, res) {
   '<img src="images/' + something + '" alt="protan image">' +
   '</body>' +
   '</html>';
-
   res.writeHead(200, {'Content-Type' : 'text/html'});
   res.write(body);
   res.end();
+});
 
-})
 app.get('/compare', delimg, transform, function(req, res) {
   var something = 'protan.jpg'
   var body = '<html>' +
@@ -61,15 +62,14 @@ app.get('/compare', delimg, transform, function(req, res) {
   '<img src="images/' + something + '" alt="protan image">' +
   '</body>' +
   '</html>';
-
   res.writeHead(200, {'Content-Type' : 'text/html'});
   res.write(body);
   res.end();
+});
 
-})
 
-app.get('/protan', delimg,  transform, function(req, res) {
-  res.status(200).sendFile('index.html', {root: __dirname + "/public"});
+app.get('/*', function(req, res) {
+  res.status(404).sendFile('404.html', {root : __dirname + '/public'});
 });
 
 app.listen(port, function(){
