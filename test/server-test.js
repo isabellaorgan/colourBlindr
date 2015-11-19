@@ -19,7 +19,7 @@ describe('the server', function(){
     });
   });
 
-  it('should GET data from the db', function(done){
+  it('should GET users from the db', function(done){
     chai.request('localhost:3000')
     .get('/api/users')
     .end(function(err, res){
@@ -30,7 +30,7 @@ describe('the server', function(){
     });
   });
 
-  it('should POST data to the DB', function(done){
+  it('should POST users to the DB', function(done){
     chai.request('localhost:3000')
     .post('/api/users')
     .send(this.userData)
@@ -52,7 +52,7 @@ describe('the server', function(){
       }.bind(this));
     });
 
-    it('should DELETE data from the DB', function(done){
+    it('should DELETE users from the DB', function(done){
       chai.request('localhost:3000')
       .delete('/api/users/' + this.user._id)
       .end(function(err, res) {
@@ -63,7 +63,7 @@ describe('the server', function(){
       });
     });
 
-    it('should modify data with a PUT request', function(done){
+    it('should modify users with a PUT request', function(done){
       chai.request('localhost:3000')
       .put('/api/users/' + this.user._id)
       .end(function(err, res){
