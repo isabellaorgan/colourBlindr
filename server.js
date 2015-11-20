@@ -19,7 +19,6 @@ app.use('/api', usersRouter);
 
 app.get('/upload', function(req, res) {
 	customHTML(res);
-	// res.status(200).sendFile('upload.html', {root: __dirname + '/public'});
 });
 
 app.get('/original', function(req, res) {
