@@ -3,7 +3,7 @@ body {
 	width: 90%;
 	margin: 0 auto;
 	background-color: #000000;
-	color: #ffffff;
+	color: #ffffff;	
 	font-family: Arial, Helvetica, sans-serif;
 	font-size: 16px;
 	line-height: 1.5;
@@ -35,14 +35,14 @@ h1 {
 }
 h2 {
 	text-align: center;
-
+	
   	font-size: 18px;
   	color: #ffd900;
 }
 h3 {
 }
 
-p {
+p { 
 	height: 75%;
 	width: 75%;
 	margin-left: 20px;
@@ -50,20 +50,8 @@ p {
 	text-align: center;
 }
 
-<<<<<<< HEAD
 #signin {
 color: #000;
-||||||| merged common ancestors
-#login {
-color: #000
-=======
-#login {
-color: #000;
-}
-
-#signin {
-	color: #000;
->>>>>>> a261b2bc06bba37030b399ef6121ae3b319a672e
 }
 
 #signup {
@@ -84,7 +72,6 @@ color: #000;
 	position: fixed;
 	bottom: 0px;
 }
-
 
 
 
