@@ -11,5 +11,5 @@ $('#signupButton').on('click', function(e) {
 	  contentType: 'application/json',
  		dataType: 'json'
 	});
-	window.location = 'https://https://colourblindr.herokuapp.com/upload.html';
+	window.location = 'https://colourblindr.herokuapp.com/upload.html';
 });
