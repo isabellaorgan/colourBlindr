@@ -22,15 +22,15 @@ app.get('/upload', function(req, res) {
 });
 
 app.get('/original', function(req, res) {
-  htmlTemplate(req, res, 'original.jpg');
+	htmlTemplate(req, res, 'original.jpg');
 });
 
 app.get('/transformed', delimg, transform, function(req, res) {
-  htmlTemplate(req, res, 'protan.jpg')
+	htmlTemplate(req, res, 'protan.jpg');
 });
 
 app.get('/compare', delimg, transform, function(req, res) {
-  htmlTemplate(req, res, 'protan.jpg', '<img src="images/original.jpg" alt="original image">' );
+	htmlTemplate(req, res, 'protan.jpg', '<img src="images/original.jpg" alt="original image">');
 });
 
 app.get('/*', function(req, res) {
