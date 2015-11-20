@@ -52,16 +52,6 @@ describe('the server', function(){
     });
   });
 
-  it('should GET a registered end point', function(done){
-    chai.request('localhost:3000')
-    .get('/transformed')
-    .end(function(err, res){
-      expect(err).to.eql(null);
-      expect(res.status).to.eql(200);
-      done();
-    });
-  });
-
   it('should send a 404 to an unregistered end point', function(done){
     chai.request('localhost:3000')
     .get('/5fbhjbu')
