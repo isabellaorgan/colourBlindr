@@ -28,7 +28,6 @@
   "dependencies": {
     "body-parser": "^1.14.1",
     "color-blind": "^0.1.1",
-    "eat": "^0.1.1",
     "express": "^4.13.3",
     "mongoose": "^4.2.5",
     "patci-jimp": "^0.2.19"
