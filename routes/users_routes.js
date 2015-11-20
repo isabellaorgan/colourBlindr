@@ -21,6 +21,8 @@ usersRouter.post('/users', bodyParser.json(), function(req, res) {
 		if (data && data.username === req.body.username) {
 			return console.log('THAT USER IS ALREADY IN THE DATABASE');
 		}
+		process.env.USERNAME = req.body.username;
+		console.log(process.env.USERNAME);
 		var newUser = new User(req.body);
 		newUser.save(function(err, data) {
 			if (err) return handleError(err, res);
