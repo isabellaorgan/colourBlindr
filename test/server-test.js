@@ -54,7 +54,7 @@ describe('the server', function(){
 
   it('should GET a registered end point', function(done){
     chai.request('localhost:3000')
-    .get('/compare')
+    .get('/transformed')
     .end(function(err, res){
       expect(err).to.eql(null);
       expect(res.status).to.eql(200);
