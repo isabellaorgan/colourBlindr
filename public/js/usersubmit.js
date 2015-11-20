@@ -1,5 +1,4 @@
 //sign in
-
 $('#signupButton').on('click', function(e) {
 	var usernameToSend = $('#newUsername').val();
 	var userVisionToSend = $('#newVisType').val();
@@ -9,7 +8,10 @@ $('#signupButton').on('click', function(e) {
 	  url: '/api/users',
 	  data: JSON.stringify( {'username': usernameToSend, 'visiontype': userVisionToSend}),
 	  contentType: 'application/json',
- 		dataType: 'json'
+ 		dataType: 'json',
+ 		success: function() {
+ 				self.location = 'https://colourblindr.herokuapp.com/upload'
+ 		}
 	});
-	window.location = 'https://colourblindr.herokuapp.com/upload.html';
 });
+

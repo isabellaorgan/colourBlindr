@@ -9,6 +9,7 @@ var imagesRouter = require(__dirname + '/routes/images_routes.js');
 var mongoURI = process.env.MONGOLAB_URI || 'mongodb://localhost/user_dev';
 var mongoose = require('mongoose');
 var htmlTemplate = require(__dirname + '/lib/html_template.js');
+var customHTML = require(__dirname + '/lib/custom.js');
 mongoose.connect(mongoURI);
 
 app.use(express.static(__dirname + '/public'));
@@ -17,7 +18,7 @@ app.use('/api', imagesRouter);
 app.use('/api', usersRouter);
 
 app.get('/upload', function(req, res) {
-	res.status(200).sendFile('upload.html', {root: __dirname + '/public'});
+	customHTML(res);
 });
 
 app.get('/original', function(req, res) {

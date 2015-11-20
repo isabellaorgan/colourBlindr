@@ -1,8 +1,8 @@
 //sign in
-console.log("wtf?")
 $('#uploadButton').on('click', function(e) {
 	console.log("click")
 	var imageToSend = $('#newImage').val();
+
   $.ajax({
 	  type: "POST",
 	  url: '/api/images',
