@@ -50,12 +50,20 @@ p {
 	text-align: center;
 }
 
+<<<<<<< HEAD
+#signin {
+color: #000;
+||||||| merged common ancestors
+#login {
+color: #000
+=======
 #login {
 color: #000;
 }
 
 #signin {
 	color: #000;
+>>>>>>> a261b2bc06bba37030b399ef6121ae3b319a672e
 }
 
 #signup {
