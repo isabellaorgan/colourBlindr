@@ -16,18 +16,18 @@ usersRouter.get('/users', function(req, res) {
 });
 
 usersRouter.post('/users', bodyParser.json(), function(req, res) {
-	// User.findOne({'username': req.body.username}, function(err, data) {
-	// 	if (err) return handleError(err, res);
-	// 	if (data && data.username === req.body.username) {
-	// 		return console.log('THAT USER IS ALREADY IN THE DATABASE');
-	// 	}
+	User.findOne({'username': req.body.username}, function(err, data) {
+		if (err) return handleError(err, res);
+		if (data && data.username === req.body.username) {
+			return console.log('THAT USER IS ALREADY IN THE DATABASE');
+		}
 		var newUser = new User(req.body);
 		newUser.save(function(err, data) {
 			if (err) return handleError(err, res);
 
 			res.json(data);
 		});
-	//});
+	});
 });
 
 usersRouter.put('/users/:id', bodyParser.json(), function(req, res) {
