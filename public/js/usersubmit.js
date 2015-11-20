@@ -5,24 +5,14 @@ $('#signupButton').on('click', function(e) {
 	var userVisionToSend = $('#newVisType').val();
 
   $.ajax({
-	  type: "POST",
+	  type: 'POST',
 	  url: '/api/users',
-	  data: JSON.stringify( {"username": usernameToSend,"visiontype": userVisionToSend}),
-	  contentType: "application/json",
+	  data: JSON.stringify( {'username': usernameToSend, 'visiontype': userVisionToSend}),
+	  contentType: 'application/json',
  		dataType: 'json'
 	});
+	console.log("click")
 
-	// $('#newUsername').val('');
-	// $('#newVisType').val('');
-
-//now route to /upload
-
-  $.ajax({
-	  type: "GET",
-	  url: '/upload'
-	  // data: JSON.stringify( {"username": usernameToSend,"visiontype": userVisionToSend}),
-	  // contentType: "application/json",
- 		// dataType: 'json'
-	});
+	window.location = 'https://https://colourblindr.herokuapp.com/upload.html';
 
 });
