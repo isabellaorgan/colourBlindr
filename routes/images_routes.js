@@ -14,6 +14,8 @@ imagesRouter.get('/images', function(req, res) {
 });
 
 imagesRouter.post('/images', bodyParser.json(), function(req, res) {
+	process.env.IMAGEPATH = req.body.imagepath;
+	console.log(process.env.IMAGEPATH);
 	var newImg = new Img(req.body);
 	newImg.save(function(err, data) {
 		if (err) return handleError(err, res);

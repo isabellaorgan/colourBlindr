@@ -8,6 +8,8 @@ var usersRouter = require(__dirname + '/routes/users_routes.js');
 var imagesRouter = require(__dirname + '/routes/images_routes.js');
 var mongoURI = process.env.MONGOLAB_URI || 'mongodb://localhost/user_dev';
 var mongoose = require('mongoose');
+var htmlTemplate = require(__dirname + '/lib/html_template.js');
+var customHTML = require(__dirname + '/lib/custom.js');
 mongoose.connect(mongoURI);
 
 app.use(express.static(__dirname + '/public'));
@@ -16,66 +18,19 @@ app.use('/api', imagesRouter);
 app.use('/api', usersRouter);
 
 app.get('/upload', function(req, res) {
-	res.status(200).sendFile('upload.html', {root: __dirname + '/public'});
+	customHTML(res);
 });
 
 app.get('/original', function(req, res) {
-	var body = '<html>' +
-  '<head>' +
-  '<meta http-equiv="Content-Type" content="text/html; ' +
-  'charset=UTF-8" + />' +
-  '<link href="https://fonts.googleapis.com/css?family=Bitter" rel="stylesheet" type="text/css"> ' +
-  '<link rel="stylesheet" href="https://colourblindr.herokuapp.com/css/reset.css"> ' +
-  '<link rel="stylesheet" href="https://colourblindr.herokuapp.com/css/fonts.css"> ' +
-  '<link rel="stylesheet" href="https://colourblindr.herokuapp.com/css/base.css"> ' +
-  '</head>' +
-  '<body>' +
-  '<img src="images/original.jpg" alt="original image">' +
-  '</body>' +
-  '</html>';
-	res.writeHead(200, {'Content-Type': 'text/html'});
-	res.write(body);
-	res.end();
+  htmlTemplate(req, res, 'original.jpg');
 });
 
 app.get('/transformed', delimg, transform, function(req, res) {
-	var something = 'protan.jpg';
-	var body = '<html>' +
-  '<head>' +
-  '<meta http-equiv="Content-Type" content="text/html; ' +
-  'charset=UTF-8" + />' +
-  '<link href="https://fonts.googleapis.com/css?family=Bitter" rel="stylesheet" type="text/css"> ' +
-  '<link rel="stylesheet" href="https://colourblindr.herokuapp.com/css/reset.css"> ' +
-  '<link rel="stylesheet" href="https://colourblindr.herokuapp.com/css/fonts.css"> ' +
-  '<link rel="stylesheet" href="https://colourblindr.herokuapp.com/css/base.css"> ' +
-  '</head>' +
-  '<body>' +
-  '<img src="images/' + something + '" alt="protan image">' +
-  '</body>' +
-  '</html>';
-	res.writeHead(200, {'Content-Type': 'text/html'});
-	res.write(body);
-	res.end();
+  htmlTemplate(req, res, 'protan.jpg')
 });
 
 app.get('/compare', delimg, transform, function(req, res) {
-	var something = 'protan.jpg';
-	var body = '<html>' +
-  '<meta http-equiv="Content-Type" content="text/html; ' +
-  'charset=UTF-8" + />' +
-  '<link href="https://fonts.googleapis.com/css?family=Bitter" rel="stylesheet" type="text/css"> ' +
-  '<link rel="stylesheet" href="https://colourblindr.herokuapp.com/css/reset.css"> ' +
-  '<link rel="stylesheet" href="https://colourblindr.herokuapp.com/css/fonts.css"> ' +
-  '<link rel="stylesheet" href="https://colourblindr.herokuapp.com/css/base.css"> ' +
-  '</head>' +
-  '<body>' +
-  '<img src="images/original.jpg" alt="original image">' +
-  '<img src="images/' + something + '" alt="protan image">' +
-  '</body>' +
-  '</html>';
-	res.writeHead(200, {'Content-Type': 'text/html'});
-	res.write(body);
-	res.end();
+  htmlTemplate(req, res, 'protan.jpg', '<img src="images/original.jpg" alt="original image">' );
 });
 
 app.get('/*', function(req, res) {
