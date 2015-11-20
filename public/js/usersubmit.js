@@ -12,6 +12,17 @@ $('#signupButton').on('click', function(e) {
  		dataType: 'json'
 	});
 
-	$('#newUsername').val('');
-	$('#newVisType').val('');
+	// $('#newUsername').val('');
+	// $('#newVisType').val('');
+
+//now route to /upload
+
+  $.ajax({
+	  type: "GET",
+	  url: '/upload'
+	  // data: JSON.stringify( {"username": usernameToSend,"visiontype": userVisionToSend}),
+	  // contentType: "application/json",
+ 		// dataType: 'json'
+	});
+
 });
