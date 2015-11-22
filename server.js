@@ -6,10 +6,13 @@ var delimg = require(__dirname + '/lib/delimg.js');
 var port = process.env.PORT || 3000;
 var usersRouter = require(__dirname + '/routes/users_routes.js');
 var imagesRouter = require(__dirname + '/routes/images_routes.js');
-var mongoURI = process.env.MONGOLAB_URI || 'mongodb://localhost/user_dev';
+var mongoURI = process.env.MONGOLAB_URI || 'mongodb://localhost/colourblindr_dev';
 var mongoose = require('mongoose');
 var htmlTemplate = require(__dirname + '/lib/html_template.js');
 var customHTML = require(__dirname + '/lib/custom.js');
+var tempAppSecret = 'ThisReallyNeedsToBeChanged';
+
+process.env.APP_SECRET = process.env.APP_SECRET || tempAppSecret ;
 mongoose.connect(mongoURI);
 
 app.use(express.static(__dirname + '/public'));
