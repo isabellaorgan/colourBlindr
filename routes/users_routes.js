@@ -4,6 +4,10 @@ var User = require(__dirname + '/../models/user');
 var handleError = require(__dirname + '/../lib/handleErrors.js');
 var httpBasic = require(__dirname + '/../lib/http_basic.js');
 var usersRouter = module.exports = exports = express.Router();
+var eatAuth = require(__dirname + '/../lib/eat_auth.js');
+var EE = require('events').EventEmitter;
+var postEmitter = new EE();
+var getEmitter = new EE();
 
 usersRouter.use(express.static(__dirname + '/public'));
 
@@ -12,41 +16,6 @@ usersRouter.get('/users', function(req, res) {
 		if (err) return handleError(err, res);
 
 		res.json(data);
-	});
-});
-
-usersRouter.post('/users', bodyParser.json(), function(req, res) {
-	User.findOne({'username': req.body.username}, function(err, data) {
-		if (err) return handleError(err, res);
-		if (data && data.username === req.body.username) {
-			return console.log('THAT USER IS ALREADY IN THE DATABASE');
-		}
-		process.env.USERNAME = req.body.username;
-		console.log(process.env.USERNAME);
-		var newUser = new User(req.body);
-		newUser.save(function(err, data) {
-			if (err) return handleError(err, res);
-
-			res.json(data);
-		});
-	});
-});
-
-usersRouter.put('/users/:id', bodyParser.json(), function(req, res) {
-	var userData = req.body;
-	delete userData._id;
-	User.update({_id: req.params.id}, userData, function(err, data) {
-		if (err) handleError(err, res);
-
-		res.json({msg: 'User updated'});
-	});
-});
-
-usersRouter.delete('/users/:id', function(req, res) {
-	User.remove({_id: req.params.id}, function(err) {
-		if (err) return handleError(err, res);
-
-		res.json({msg: 'User removed'});
 	});
 });
 
@@ -72,23 +41,19 @@ usersRouter.get('/users/:username', function(req, res) {
 	});
 });
 
-//////////////////
-
-var EE = require('events').EventEmitter;
-var postEmitter = new EE();
-var getEmitter = new EE();
-
-usersRouter.post('/signin', bodyParser.json(), function(req, res) {
+usersRouter.post('/signup', bodyParser.json(), function(req, res) {
   User.find({'username': req.body.username}, function(err, data) {
     if (err) return handleError(err, res);
     if (data[0] && data[0].basic.username === req.body.username) {
-      return console.log('THAT USER IS ALREADY IN THE DATABASE'); // prevent newUser emission if the username is already in the db. NOTHING FURTHER SHOULD HAPPEN WITH THIS REQUEST.
+      console.log('THAT USER IS ALREADY IN THE DATABASE'); // prevent newUser emission if the username is already in the db. NOTHING FURTHER SHOULD HAPPEN WITH THIS REQUEST.
+      return res.json({msg: "that user is already in the database"});
     }
     postEmitter.emit('newUser', req, res); //only if user not in db aleady
   });
 });
 
 postEmitter.on('newUser', function(req, res) {
+  process.env.USERNAME = req.body.username;
   var newUser = new User();
   newUser.basic.username = req.body.username;
   newUser.username = req.body.username;
@@ -149,5 +114,38 @@ getEmitter.on('three', function(req, res, user) {
   user.generateToken(function(err, token) {
     if (err) return handleError(err, res);
     res.json({token: token});
+  });
+});
+
+
+
+
+usersRouter.put('/users/:username', bodyParser.json(), eatAuth, function(req, res) {
+  var userData = req.body;
+  delete userData._id;
+  User.findOne({username: req.params.username}, function(err, data){
+    if (err) return handleError(err, res);
+    if (data && data._doc.username === req.user.basic.username){
+      User.update({username: req.params.username}, userData, function(err, data) {
+        if (err) handleError(err, res);
+        res.json({msg: 'User updated'});
+      });
+    } else {
+    res.json({msg: 'no way!'});
+    }
+  });
+});
+
+usersRouter.delete('/users/:username', bodyParser.json(), eatAuth, function(req, res) {
+  User.findOne({username: req.params.username}, function(err, data){
+    if (err) return handleError(err, res);
+    if (data && data._doc.username === req.user.basic.username){
+      User.remove({username: req.params.username}, function(err) {
+        if (err) return handleError(err, res);
+        res.json({msg: 'User removed'});
+      });
+    } else {
+    res.json({msg: "no way!"});
+    }
   });
 });

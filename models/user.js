@@ -8,7 +8,8 @@ var userSchema = new mongoose.Schema({
     username: String,
     password: String
   },
-  visiontype: {type: String, default: 'deuteranopia'}
+  visiontype: {type: String, default: 'deuteranopia'},
+  admin: {type: Boolean, default: false}
 });
 
 userSchema.methods.generateHash = function(password, callback) {
