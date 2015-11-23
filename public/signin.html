@@ -3,45 +3,50 @@
   <head>
     <meta charset="utf-8">
   <title>Colo(u)rBlindr</title>
- <link href='https://fonts.googleapis.com/css?family=Roboto:400,100' rel='stylesheet' type='text/css'>
-  <!-- <link rel="stylesheet" href="https://colourblindr.herokuapp.com/css/reset.css"> -->
+  <link href='https://fonts.googleapis.com/css?family=Roboto:400,100' rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="https://colourblindr.herokuapp.com/css/reset.css">
   <link rel="stylesheet" href="css/fonts.css">
-  <link rel="stylesheet" type="text/css" href="css/base.css">
+  <link rel="stylesheet" href="css/base.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
   </head>
   <body>
     <div class="row">
       <img class="clrgls" src="img/clrgls.jpg">
       <div class="cb-hdr">
-        <header id="colourblindr-header"><a href="https://colourblindr.herokuapp.com/">Colo(u)rBlindr</a></header><br><br><br>
+        <header id="colourblindr-header"><a href="https://colourblindr.herokuapp.com/">Colo(u)rBlindr</a></header><br><br>
       </div>
       <div class="large-11 columns">
       </div>
     <div class="row">
-      <div class="app-desc large-offset-3">Colo(u)rBlindr is an app that allows<br>
-      colour sighted people to perceive the world<br>
-      as colour blind people do, thus allowing them<br>
-      to understand the challenges that colour blind<br> 
-      individuals face.
-      <br><br><br>
+      <div class="app-desc">
       </div>
       <div class="large-10 large-offset-1 columns">
       </div>
     </div>
     <div class="row">
       <div class="large-1 columns">
+        <div id="signin">
+    <fieldset>
+    <legend>Sign In</legend>
+        <form id="signin-form">
+          <input type="text" placeholder="Username" id="usernameId">
+          <input type="text" placeholder="Password" id="password">
+          <input type="button" value="Sign In" id="signinButton">
+        </form>
+    </fieldset><br><br>
+  </div>
       <div class="large-9 large-offset-2 columns">
       </div>
     </div>
     <div class="row">
-      <div class="large-1 columns">
+      <div class="large-1 columns"><br><br>
       </div>
-      <div class="signinup"><a href="https://colourblindr.herokuapp.com/signin.html"><input id="sub" type="button" value="Sign In"/></a><a href="https://colourblindr.herokuapp.com/signup.html"><input id="sub" type="button" value="Sign Up"/></a><br></div>
       <div class="contact-info">
         <a href="https://github.com/isabellaorgan/colourBlindr" class="icon-github"> Colo(u)rBlindr on GitHub</a>
         <br>
         <a href="https://colourblindr.herokuapp.com/contact.html">Contact the Colo(u)rBlindr team</a>
       </div>
     </div>
+    <script src="https://colourblindr.herokuapp.com/js/usersubmit.js"></script>
   </body>
 </html>
