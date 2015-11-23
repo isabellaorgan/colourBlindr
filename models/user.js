@@ -5,7 +5,6 @@ var eat = require('eat');
 var userSchema = new mongoose.Schema({
   username: String,
   basic: {
-    username: String,
     password: String
   },
   visiontype: {type: String, default: 'deuteranopia'},
