@@ -80,6 +80,7 @@ postEmitter.on('save', function(newUser, req, res) {
 postEmitter.on('makeToken', function(newUser, req, res) {
   newUser.generateToken(function(err, token) {
     if (err) return handleError(err, res);
+    process.env.TOKEN = token;
     res.json({token: token});
   });
 });
@@ -115,8 +116,10 @@ getEmitter.on('verifyHash', function(req, res, user) {
 });
 
 getEmitter.on('getToken', function(req, res, user) {
+   process.env.USERNAME = req.auth.username;
   user.generateToken(function(err, token) {
     if (err) return handleError(err, res);
+    process.env.TOKEN = token;
     res.json({token: token});
   });
 });

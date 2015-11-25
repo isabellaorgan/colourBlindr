@@ -3,12 +3,12 @@ var bcrypt = require('bcrypt');
 var eat = require('eat');
 
 var userSchema = new mongoose.Schema({
-  username: String,
+   username: String,
+  // username: {type: String, unique: true}  ///// try this!!!!!!
   basic: {
     password: String
   },
-  visiontype: {type: String, default: 'deuteranopia'},
-  admin: {type: Boolean, default: false}
+  visiontype: {type: String, default: 'deuteranopia'}
 });
 
 userSchema.methods.generateHash = function(password, callback) {
