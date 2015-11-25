@@ -1,6 +1,5 @@
 //sign in
 $('#uploadButton').on('click', function(e) {
-	console.log("click")
 	var imageToSend = $('#newImage').val();
 	var token = $('#token').text();
 

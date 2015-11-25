@@ -3,7 +3,7 @@ body {
 	width: 90%;
 	margin: 0 auto;
 	background-color: #000;
-	color: #ffffff;		
+	color: #ffffff;
 	font-family: 'Roboto', sans-serif;
 	font-weight: 100;
 	font-size: 28px;
@@ -50,7 +50,7 @@ h2 {
 h3 {
 }
 
-p { 
+p {
 	height: 75%;
 	width: 75%;
 	margin-left: 20px;
@@ -189,4 +189,6 @@ legend {
 }
 
 
-
+#token {
+	display: none;
+}
