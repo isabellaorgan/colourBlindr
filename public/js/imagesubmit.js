@@ -1,7 +1,10 @@
 //sign in
+
+
 $('#uploadButton').on('click', function(e) {
 	var imageToSend = $('#newImage').val();
 	var token = $('#token').text();
+
 
   $.ajax({
 	  type: "POST",
@@ -10,8 +13,12 @@ $('#uploadButton').on('click', function(e) {
 	  contentType: "application/json",
  		dataType: 'json',
  		success: function() {
- 			$('.added').remove();
- 			$('#added').append('<p class="added">You added ' + imageToSend + ' to the database!</p>')
+ 			console.log("added to database")
+ 			// $('.added').remove();
+ 			// $('#added').append('<p class="added">You added ' + imageToSend + ' to the database!</p>');
+
  		}
 	});
+
 });
+

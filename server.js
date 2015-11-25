@@ -11,6 +11,8 @@ var mongoose = require('mongoose');
 var htmlTemplate = require(__dirname + '/lib/html_template.js');
 var customHTML = require(__dirname + '/lib/custom.js');
 var tempAppSecret = 'ThisReallyNeedsToBeChanged';
+var formidable = require('formidable')
+var customHTML2 = require(__dirname + '/lib/custom2.js');
 
 process.env.APP_SECRET = process.env.APP_SECRET || tempAppSecret ;
 mongoose.connect(mongoURI);
@@ -19,6 +21,32 @@ app.use(express.static(__dirname + '/public'));
 
 app.use('/api', imagesRouter);
 app.use('/api', usersRouter);
+
+//////  the page the image gets stored on
+app.get('/showfile', function(req, res) {
+	res.writeHead(200, {'Content-Type' : 'image/png'});
+  fs.createReadStream("genericPlaceHolderText.png").pipe(res);
+});
+
+//// the default page where the browser goes hwen the upload butten is clicked
+app.post('/uploadedfile', function(req, res) {
+
+  var form = new formidable.IncomingForm();
+  console.log('about to parse');
+  form.parse(req, function(err, fields, files){
+    console.log('parsing done');
+    fs.rename(files.upload.path, "genericPlaceHolderText.png", function(err){
+      if (err) {
+        fs.unlink('genericPlaceHolderText.png');
+        fs.rename(files.upload.path, '/tmp/test.png');
+      }
+    })
+  });
+  setTimeout(	function() {
+  	customHTML2(res)}
+, 5000)
+
+});
 
 app.get('/upload', function(req, res) {
 	customHTML(res);
