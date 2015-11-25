@@ -42,9 +42,9 @@ app.post('/uploadedfile', function(req, res) {
       }
     })
   });
-  setTimeout(	function() {
-  	customHTML2(res)}
-, 5000)
+  process.nextTick(function() {
+    customHTML2(res)
+  })
 
 });
 
