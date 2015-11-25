@@ -41,9 +41,9 @@ app.post('/uploadedfile', function(req, res) {
       }
     })
   });
-  process.nextTick(function() {
+  setTimeout(function() {
     customHTML2(res)
-  })
+  }, 500)
 
 });
 
