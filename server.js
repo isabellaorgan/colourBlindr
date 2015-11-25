@@ -25,7 +25,7 @@ app.use('/api', usersRouter);
 //////  the page the image gets stored on
 app.get('/showfile', function(req, res) {
 	res.writeHead(200, {'Content-Type' : 'image/png'});
-  fs.createReadStream('generic_place_holder_text.png').pipe(res);
+  fs.createReadStream('stuff').pipe(res);
 });
 
 //// the default page where the browser goes hwen the upload butten is clicked
@@ -34,10 +34,10 @@ app.post('/uploadedfile', function(req, res) {
   console.log('about to parse');
   form.parse(req, function(err, fields, files){
     console.log('parsing done');
-    fs.rename(files.upload.path, 'generic_place_holder_text.png', function(err){
-      if (err) {
-        fs.unlink('generic_place_holder_text.png');
-        fs.rename(files.upload.path, '/tmp/test.png');
+    fs.rename(files.upload.path, 'stuff', function(err){
+      if (err) { throw err
+        // fs.unlink('generic_place_holder_text.png');
+        // fs.rename(files.upload.path, '/tmp/test.png');
       }
     })
   });
