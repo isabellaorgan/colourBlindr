@@ -18,16 +18,16 @@ imagesRouter.post('/images', bodyParser.json(), eatAuth, function(req, res) {
 	newImg.owner = req.user.username;
 	newImg.save(function(err, data) {
 		if (err) return handleError(err, res);
-		res.json({msg: "posted new image"});
+		res.json({msg: 'posted new image'});
 	});
 });
 
 imagesRouter.put('/images/:imagepath', bodyParser.json(), eatAuth, function(req, res) {
 	var imageData = req.body;
 	delete imageData._id;
-	Img.findOne({imagepath: req.params.imagepath}, function(err, data){
+	Img.findOne({imagepath: req.params.imagepath}, function(err, data) {
 		if (err) return handleError(err, res);
-		if (data && data._doc.owner === req.user.username){
+		if (data && data._doc.owner === req.user.username) {
 			Img.update({imagepath: req.params.imagepath}, imageData, function(err, data) {
 				if (err) handleError(err, res);
 				res.json({msg: 'Image updated'});
@@ -41,9 +41,9 @@ imagesRouter.put('/images/:imagepath', bodyParser.json(), eatAuth, function(req,
 imagesRouter.delete('/images/:imagepath', bodyParser.json(), eatAuth, function(req, res) {
 	var imageData = req.body;
 	delete imageData._id;
-	Img.findOne({imagepath: req.params.imagepath}, function(err, data){
+	Img.findOne({imagepath: req.params.imagepath}, function(err, data) {
 		if (err) return handleError(err, res);
-		if (data && data._doc.owner === req.user.username){
+		if (data && data._doc.owner === req.user.username) {
 			Img.remove({imagepath: req.params.imagepath}, function(err, data) {
 				if (err) handleError(err, res);
 				res.json({msg: 'Image deleted'});
