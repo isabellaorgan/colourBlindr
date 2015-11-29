@@ -3,6 +3,12 @@ $('#signupButton').on('click', function(e) {
 	var usernameToSend = $('#newUsername').val();
 	var passwordToSend = $('#password').val();
 	var userVisionToSend = $('#newVisType').val();
+	console.log(usernameToSend)
+	console.log(passwordToSend)
+	console.log(userVisionToSend)
+
+
+
 
   $.ajax({
 	  type: 'POST',
@@ -15,5 +21,6 @@ $('#signupButton').on('click', function(e) {
  		}
 	});
 });
+
 
 

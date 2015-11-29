@@ -66,6 +66,9 @@ postEmitter.on('newUser', function(req, res) {
 postEmitter.on('createHash', function(newUser, req, res) {
 	newUser.generateHash(req.body.password, function(err, hash) {
 		if (err) return handleError(err, res);
+		else {
+			postEmitter.emit('save', newUser, req, res);
+		}
 	});
 });
 
