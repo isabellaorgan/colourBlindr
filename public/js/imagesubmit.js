@@ -1,9 +1,7 @@
 var imageToSend;
+
 $('#sub').on('click', function(e) {
-	// var imageToSend = $('#newImage').val();
 	var token = $('#token').text();
-    console.log(imageToSend)
-    console.log(token)
 
 
   $.ajax({
@@ -13,12 +11,9 @@ $('#sub').on('click', function(e) {
 	  contentType: "application/json",
  		dataType: 'json',
  		success: function() {
- 			console.log("added to database")
  			$('.added').remove();
  			$('#added').append('<p class="added">You added ' + imageToSend + ' to the database!</p>');
-            $('#added').append('<img src="' + imageToSend + '"'  + 'alt="uploaded image">');
-
-
+            $('#added').append('<img class="added" src="' + imageToSend + '"'  + 'alt="uploaded image">');
  		}
 	});
 
@@ -66,7 +61,6 @@ function upload_file(file, signed_request, url){
         if (xhr.status === 200) {
             console.log(url)
            imageToSend = url;
-            // document.getElementById("avatar_url").value = url;
         }
     };
     xhr.onerror = function() {
