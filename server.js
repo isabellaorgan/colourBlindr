@@ -11,7 +11,7 @@ var mongoose = require('mongoose');
 var htmlTemplate = require(__dirname + '/lib/html_template.js');
 var customHTML = require(__dirname + '/lib/custom.js');
 var tempAppSecret = 'ThisReallyNeedsToBeChanged';
-var formidable = require('formidable')
+var formidable = require('formidable');
 var customHTML2 = require(__dirname + '/lib/custom2.js');
 
 process.env.APP_SECRET = process.env.APP_SECRET || tempAppSecret ;
@@ -24,26 +24,26 @@ app.use('/api', usersRouter);
 
 //////  the page the image gets stored on
 app.get('/showfile', function(req, res) {
-	res.writeHead(200, {'Content-Type' : 'image/png'});
-  fs.createReadStream('generic_place_holder_text.png').pipe(res);
+	res.writeHead(200, {'Content-Type': 'image/png'});
+	fs.createReadStream('generic_place_holder_text.png').pipe(res);
 });
 
 //// the default page where the browser goes hwen the upload butten is clicked
 app.post('/uploadedfile', function(req, res) {
-  var form = new formidable.IncomingForm();
-  console.log('about to parse');
-  form.parse(req, function(err, fields, files){
-    console.log('parsing done');
-    fs.rename(files.upload.path, 'generic_place_holder_text.png', function(err){
-      if (err) {
-        fs.unlink('generic_place_holder_text.png');
-        fs.rename(files.upload.path, '/tmp/test.png');
-      }
-    })
-  });
-  setTimeout(function() {
-    customHTML2(res)
-  }, 500)
+	var form = new formidable.IncomingForm();
+	console.log('about to parse');
+	form.parse(req, function(err, fields, files) {
+	console.log('parsing done');
+	fs.rename(files.upload.path, 'generic_place_holder_text.png', function(err) {
+		if (err) {
+			fs.unlink('generic_place_holder_text.png');
+			fs.rename(files.upload.path, '/tmp/test.png');
+		}
+	});
+});
+	setTimeout(function() {
+		customHTML2(res);
+	}, 500);
 
 });
 
