@@ -41,8 +41,9 @@ app.get('/transformed', delimg, transform, function(req, res) {
 });
 
 app.get('/compare', delimg, transform, function(req, res) {
-	htmlTemplate(req, res, 'protan.jpg', '<img src="images/original.jpg" alt="original image">');
+	htmlTemplate(req, res, 'protan.jpg', '<img src="' + process.env.IMAGEPATH + '" alt="original image">'|| '<img src="images/original.jpg" alt="original image">');
 });
+
 
 app.get('/sign_s3', function(req, res){
     aws.config.update({accessKeyId: AWS_ACCESS_KEY, secretAccessKey: AWS_SECRET_KEY});

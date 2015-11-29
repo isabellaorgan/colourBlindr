@@ -14,7 +14,6 @@ imagesRouter.get('/images', function(req, res) {
 
 imagesRouter.post('/images', bodyParser.json(), eatAuth, function(req, res) {
 	process.env.IMAGEPATH = req.body.imagepath;
-	console.log("image pagh!!!!", req.body.imagepath)
 	var newImg = new Img(req.body);
 	newImg.owner = req.user.username;
 	newImg.save(function(err, data) {
