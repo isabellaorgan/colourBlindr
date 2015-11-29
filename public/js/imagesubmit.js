@@ -14,6 +14,7 @@ $('#sub').on('click', function(e) {
  			$('.added').remove();
  			$('#added').append('<p class="added">You added ' + imageToSend + ' to the database!</p>');
             $('#added').append('<img class="added" src="' + imageToSend + '"'  + 'alt="uploaded image">');
+            $('#added').append('<p class="added"> Click <a href="/compare"> Here </a> to see the imaged transformed through the ColourBlindr.</p>');
  		}
 	});
 
