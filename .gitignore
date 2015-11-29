@@ -13,3 +13,4 @@ colourblindr_dev.0
 colourblindr_dev.ns
 **/_tmp
 **/journal
+.env
