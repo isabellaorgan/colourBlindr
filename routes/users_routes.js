@@ -108,7 +108,7 @@ getEmitter.on('returningUser', function(req, res) {
 getEmitter.on('verifyHash', function(req, res, user) {
 	user.compareHash(req.auth.password, function(err, comparrison) {
 		// this is really just bcrypt.compare() so comparrison is from bcrypt and is either "true" or "false" - did the password input match the data decrypted from the hash?
-		if (err) handleError(err, res);
+		if (err) return handleError(err, res);
 		if (comparrison === false) {
 			console.log('Could not authinticate: ' + req.auth.username);
 			return res.status(401).json({msg: 'Nope!'});
